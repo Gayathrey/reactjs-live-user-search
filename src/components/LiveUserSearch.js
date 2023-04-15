@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import { UserService } from "../services/UserService";
 
 let LiveUserSearch = () => {
-
   let [state, setState] = useState({
     searchKey: "",
     loading: false,
@@ -31,21 +30,16 @@ let LiveUserSearch = () => {
           errorMessage: error,
         });
       }
- return () => {
+      return () => {
         response = null;
       };
-     
     }
 
     fetchData();
-  },[]);
-
-
-
-
+  }, []);
 
   let searchUser = (event) => {
-    let filteredUsers = state.fUsers.filter(user => {
+    let filteredUsers = state.fUsers.filter((user) => {
       return user.name.first
         .toLowerCase()
         .includes(event.target.value.toLowerCase());
